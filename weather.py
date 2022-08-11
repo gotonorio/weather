@@ -1,15 +1,15 @@
-"""
-https://www.city.kawasaki.jp/170/page/0000009578.html
-https://www.data.jma.go.jp/gmd/risk/obsdl/index.php
-- 気象庁のCSVデータはヘッダーを削除する。
-programming by N.Goto (2022-08-11)
-"""
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
 
 
 def main(graph_type='plt') -> None:
+    """
+    https://www.city.kawasaki.jp/170/page/0000009578.html
+    https://www.data.jma.go.jp/gmd/risk/obsdl/index.php
+    - 気象庁のCSVデータはヘッダーを削除する。
+    programming by N.Goto (2022-08-11)
+    """
     # データ数が500以上の場合、表示を制限する。
     pd.set_option('display.max_rows', 500)
     # 小数点以下1桁とする。
