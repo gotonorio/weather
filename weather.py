@@ -1,3 +1,9 @@
+"""
+https://www.city.kawasaki.jp/170/page/0000009578.html
+https://www.data.jma.go.jp/gmd/risk/obsdl/index.php
+- 気象庁のCSVデータはヘッダーを削除する。
+programming by N.Goto (2022-08-11)
+"""
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
@@ -146,11 +152,5 @@ def plot_rainy_days_px(df, start_year, end_year, height=650, width=950, title='�
 
 
 if __name__ == "__main__":
-    """
-    https://www.city.kawasaki.jp/170/page/0000009578.html
-    https://www.data.jma.go.jp/gmd/risk/obsdl/index.php
-    - 気象庁のCSVデータはヘッダーを削除する。
-    - plotlyでグラフ表示の場合は、main('px')とする。
-    programming by N.Goto (2022-08-11)
-    """
+    """ plotlyでグラフ表示の場合は、main('px')とする。 """
     main()
