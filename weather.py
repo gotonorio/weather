@@ -10,8 +10,6 @@ import plotly.express as px
 
 
 def main(graph_type='plt') -> None:
-    plt.style.use('ggplot')
-    plt.rcParams['font.family'] = 'Ricty Diminished'
     # データ数が500以上の場合、表示を制限する。
     pd.set_option('display.max_rows', 500)
     # 小数点以下1桁とする。
@@ -25,6 +23,8 @@ def main(graph_type='plt') -> None:
 
     if graph_type == 'plt':
         # matplotlibによるグラフ表示
+        # plt.style.use('ggplot')
+        plt.rcParams['font.family'] = 'Ricty Diminished'
         # 降水量
         plot_rain_fall_plt(df, start_year, end_year)
         # 降水日数
@@ -44,7 +44,7 @@ def read_csv_data(fn) -> pd.core.frame.DataFrame:
     char_code = 'utf_8'
     # 1列目をDatetimeIndexとして読み込む。
     df = pd.read_csv(fn, encoding=char_code, parse_dates=True,
-                     index_col=0, header=None, usecols=[0, 1])
+                     index_col=0, header=None, usecols=[0, 1], skiprows=0, sep=",")
     df.columns = ['降水量']
 
     # データ数が500以上の場合、表示を制限する。
@@ -132,6 +132,7 @@ def plot_rain_amount_px(df, start_year, end_year, height=650, width=950, title='
 
 
 def plot_rainy_days_px(df, start_year, end_year, height=650, width=950, title='無題') -> None:
+    """ 降水日数グラフ表示 """
     # 月毎の降雨日数（月で集約して合計する）
     df_rainy_days = df[df['降水量'] > 0].resample('M').count()
     # print(df_count)
