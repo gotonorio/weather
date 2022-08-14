@@ -36,7 +36,7 @@ def main(graph_type='plt') -> None:
         plot_rainy_days_plt(df, start_year, end_year, area)
     else:
         # plotlyによるグラフ表示
-        # plot_original_data_px(df, 650, 950, 'オリジナルデータ')
+        plot_original_data_px(df, area, 650, 950)
         plot_rain_amount_px(df, area, start_year, end_year, 650, 950)
         plot_rainy_days_px(df, area, start_year, end_year, 650, 950)
 
@@ -104,9 +104,9 @@ def plot_rainy_days_plt(df, start_year, end_year, area) -> None:
     plt.show()
 
 
-def plot_original_data_px(df, height=650, width=950, title='無題') -> None:
+def plot_original_data_px(df, area, height=650, width=950) -> None:
     """ オリジナルデータを表示 """
-    fig = px.line(df, height=height, width=950, title=title)
+    fig = px.line(df, height=height, width=950, title=f'{AREA[area]}の降水量')
 
     fig.update_layout(font_size=14, hoverlabel_font_size=14, hoverlabel_font_color='white',
                       xaxis_title='日付', yaxis_title='降水量',
